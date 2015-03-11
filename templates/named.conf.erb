@@ -10,6 +10,16 @@ acl <%= key %> {
     <%= line %>;
 <% end -%>
 };
+<% end -%>
+<% end -%>
+
+<% if !@keys.empty? -%>
+<% @keys.sort_by {|key, value| key}.each do |key,value| -%>
+key <%= key %> {
+<% value.each do |k, v| -%>
+    <%= k %> "<%= v %>";
+<% end -%>
+};
 
 <% end -%>
 <% end -%>
@@ -116,6 +126,15 @@ view "<%= key %>" {
 <% if value['includes'] and !value['includes'].empty? -%>
 <% value['includes'].each do |filename| -%>
     include "<%= filename %>";
+<% end -%>
+<% end -%>
+<% if value['server'] and !value['server'].empty? -%>
+<% value['server'].sort_by {|key, value| key}.each do |key,value| -%>
+    server <%= key %> {
+<% value.each do |line| -%>
+        <%= line %>;
+<% end -%>
+    };
 <% end -%>
 <% end -%>
 <% if value['zones'] and !value['zones'].empty? -%>
