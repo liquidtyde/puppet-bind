@@ -86,7 +86,7 @@ options {
 <% @extra_options.sort_by {|key, value| key}.each do |key,value| -%>
   <%# Deal with options that don't play well as array elements %>
   <% if key.eql?('also-notify') -%>
-    <%= key %> { <%= value.join('; ') %>; };
+    <%= key %> { <%= value.join(';; ') %>; };
   <% else -%>
     <%= key %> <%= value %>;
   <% end -%>
