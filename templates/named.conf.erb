@@ -79,9 +79,7 @@ options {
     allow-transfer { <%= @allow_transfer.join("; ") %>; };
 <% end -%>
 <% if !@check_names.empty? -%>
-<% @check_names.each do |line| -%>
-    check-names <%= line.join(' ') %>;
-<% end -%>
+    check-names <%= @check_names.join(' ') %>;
 <% end -%>
 
 <% if !@extra_options.empty? -%>
